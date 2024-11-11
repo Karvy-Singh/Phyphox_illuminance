@@ -1,0 +1,4 @@
+selenium==4.10.0  # Ensure compatibility with your code
+xlrd==2.0.1   # For handling Excel files
+pandas==2.2.3    # For data manipulation and reading Excel files
+Webdriver 
