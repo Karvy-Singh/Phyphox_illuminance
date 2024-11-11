@@ -4,10 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
-import time, os, csv, pandas, http.server, socketserver
-
-port=8000
-Handler = http.server.SimpleHTTPRequestHandler
+import time, os
 
 #Current directory must be where your webdriver's extracted files are present
 download_dir= os.path.join(os.getcwd(), 'PHYPBL')
@@ -56,7 +53,10 @@ for filename in os.listdir(dir):
         full_path = os.path.join(dir, filename)
         new_path = os.path.join(dir, base_name)
         os.rename(full_path, new_path)
-        
+
+#USE ALL OF THE CODE ABOVE THIS COMMENT FOR ONLY DOWNLOADING THE FILE
+
+import pandas
 for filename in os.listdir(dir):
     print(filename)
     df = pandas.read_excel(os.path.join(dir,filename), engine='xlrd') 
@@ -71,8 +71,12 @@ if 100< ill_avg <300:
     print("optimal")
 else:
     print("not optimal")
-        
+    
+import http.server, socketserver
 from http.server import BaseHTTPRequestHandler, HTTPServer
+
+port=8000
+Handler = http.server.SimpleHTTPRequestHandler
 
 class SimpleHandler(BaseHTTPRequestHandler):
     def do_GET(self):
